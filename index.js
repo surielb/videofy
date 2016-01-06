@@ -77,7 +77,7 @@ function videofy(input, output, opts, fn) {
             cmd.push('-c:v', String(opts.codec));
             if(opts.extra)
             {
-                for (k in opts) {
+                for (k in opts.extra) {
                     v = opts[k];
                     cmd.push('-' +k,String(v));
                 }
