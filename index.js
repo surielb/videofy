@@ -95,3 +95,21 @@ function videofy(input, output, opts, fn) {
 
 
 }
+
+module.exports.ffmpeg = function(input,output,options,cb){
+    var cmd = ['ffmpeg'];
+
+    cmd.push('-i', input);
+    for (k in options) {
+        v = options[k];
+        cmd.push('-' +k,String(v));
+    }
+
+    cmd.push(output);
+
+    cmd = escape(cmd);
+    console.log(cmd);
+    debug("exec %s", cmd);
+
+    exec(cmd, cb);
+};
